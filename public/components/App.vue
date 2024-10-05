@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto lg:max-w-[1024px] [&>*]:my-[20px] [&>*]:border [&>*]:border-black">
+  <div class="mx-auto lg:max-w-[1024px] [&>div>section]:my-[20px] [&>div>section]:border [&>div>section]:border-black">
     <div class="header bg-[#F8CE08] text-black flex justify-between">
       <div class="left">
         <a href="tel://0048538538757">
@@ -17,17 +17,17 @@
         [ig]
       </div>
     </div>
-    <nav class="menu">
-      <div class="logo">[logo]</div>
+    <nav class="menu flex">
+      <div class="logo flex-1">[logo]</div>
       <div class="right">
-        <a href="#home">Home</a>
-        <a href="#about">O nas</a>
-        <a href="#kontakt">Kontakt</a>
+        <a href="#home" :class="{'underline decoration-[#F8CE08]': page == 0}" @click.prevent="page = 0">Home</a>
+        <a href="#about" :class="{'underline decoration-[#F8CE08]': page == 1}" @click.prevent="page = 1">O nas</a>
+        <a href="#kontakt" :class="{'underline decoration-[#F8CE08]': page == 2}" @click.prevent="page = 2">Kontakt</a>
       </div>
     </nav>
     <!-- Home page start -->
-    <div>
-      <section id="hero">
+    <div v-if="page == 0">
+      <section id="hero" class="grid grid-cols-2 gap-4   grid-flow-col auto-cols-max">
         <div class="col-5">
           <div>
             ZawiezieMy... Ciebie, Twoje auto i Twoje rzeczy!
@@ -42,15 +42,13 @@
           <a href="btn btn-secondary" class="btn">Zapoznaj się z ofertą</a>
         </div>
         <div class="col-7">
-          <div class="carousel">
+          <div class="carousel  flex- gap-2 overflow-auto -- [&>*>img]:h-[400px] [&>*>img]:max-w-[unset] [&>div]:inline-block" style="white-space: nowrap;">
             <div class="slide">
-              <img src="./carousel-taxi-1.webp" alt="Taxi Bełchatów, car, roof">
-            </div>
-            <div>
-              <img src="./carousel-pomoc-drogowa.webp" alt="Pomoc drogowa Bełchatów">
-            </div>
-            <div>
-              <img src="./carousel-przewoz-osob.webp" alt="Przewóz osób Bełchatów">
+              <img src="./hero-slide-taxi 2.png" alt="Taxi Bełchatów, car, roof">
+            </div><div>
+              <img src="./hero-slide-laweta.png" alt="Pomoc drogowa Bełchatów">
+            </div><div>
+              <img src="./hero-slide-bus.png" alt="Przewóz osób Bełchatów">
             </div>
           </div>
         </div>
@@ -62,7 +60,7 @@
         </div>
         <h2>Ty wyznaczasz cel, my znajdziemy najlepszą drogę.</h2>
         <div>
-          <ul class="list-decimal hover:[&>*]:list-disc columns-2">
+          <ul class="list-decimal hover:[&>*]:list-disc md:columns-2">
             <li>Usługi na terenie Bełchatowa i okolicy, w całej Polsce oraz zagranicą</li>
             <li>Gwarancja wygody i punktualności</li>
             <li>Dostępność 24/7</li>
@@ -72,7 +70,7 @@
         </div>
       </section>
       <section id="features">
-        <div class="row flex">
+        <div class="row lg:flex">
           <div class="col">
             <h3>Usługi taxi</h3>
             <div class="img" contenteditable>
@@ -148,7 +146,7 @@
         </div>
         <h2>Nie wierz nam na słowo, sprawdź co mówią o nas inni.</h2>
         <div>
-          <ul class="carousel flex">
+          <ul class="carousel lg:flex">
             <li class="slide">
               <figure>
                 <blockquote>
@@ -181,17 +179,60 @@
           </ul>
         </div>
       </section>
-      <section id="opinie">
+      <section id="map" @click="map += 1, map %= 4">
         <div class="title">
           <div class="text">Mapa</div>
           <span class="spacer">////</span>
         </div>
-        <div contenteditable="false">
-          <img src="./mapa.png">
+        <!-- <button @click="map += 1, map %= 4">dalej</button> -->
+        <div v-show="map % 4 == 0" contenteditable="false">
+          <img src="./mapa-0.png">
+        </div>
+        <div v-show="map % 4 == 1" contenteditable="false">
+          <img src="./mapa-1.png">
+        </div>
+        <div v-show="map % 4 == 2" contenteditable="false">
+          <img src="./mapa-2.png">
+        </div>
+        <div v-show="map % 4 == 3" contenteditable="false">
+          <img src="./mapa-3.png">
         </div>
       </section>
     </div>
     <!-- Home page end -->
+    <!-- About start -->
+    <div v-show="page == 1">
+      <div class="flex">
+        <div class="flex-1">
+          <h2>Zaufaj naszemu doświadczeniu</h2>
+          <p>
+            Firma zawieziemy powstała w 2023 r. Jednak z transportem jesteśmy związani od kilku lat. Przez ten okres zdobyliśmy spore doświadczenie przede wszystkim na trasach międzynarodowych.
+          </p>
+          <p>
+            Dzięki bogatemu doświadczeniu możemy świadczyć usługi na najwyższym poziomie, dbając o satysfakcję oraz bezpieczeństwo naszych klientów – zarówno tych obecnych, jak i nowych. 
+          </p>
+          <p>
+            Działamy głównie w Bełchatowie i okolicach, ale obsługujemy również zlecenia na terenie całego kraju oraz poza jego granicami.
+          </p>
+        </div>
+        <div class="flex-1">
+          <img src="./about-col-2nd.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- About end -->
+    <!-- Kontakt start -->
+    <div v-show="page == 2">
+      <div class="flex max-w-full">
+        <div class="flex-1">
+          <img src="./contact-col-1st.png" alt="">
+        </div>
+        <div class="flex-1">
+          <img src="./contact-col-2nd.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- Kontakt end -->
     <section id="footer" class="dark:bg-[#262523] dark:text-[#C7C7C4]">
       <div contenteditable="false">
         <img src="./footer-mock.png" alt="">
@@ -225,7 +266,20 @@ new Vue({
       isDev: localStorage.isDev,
       // ...{isDev}: localStorage,
       window,
+      map: 0,
+      page: ['#home', '#about', '#kontakt'].indexOf(location.hash),
+      page: {
+        [location.hash]: 0,
+        '#home': 0,
+        '#about': 1,
+        '#kontakt': 2,
+      }[location.hash],
     }
-  }
+  },
+  watch: {
+    page(v) {
+      location.hash = ['home', 'about', 'kontakt'][v]
+    },
+  },
 })
 </script>
