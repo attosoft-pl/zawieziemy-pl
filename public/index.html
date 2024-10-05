@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zawieziemy</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.5"></script>
+  <style>
+    section > .title {
+      display: flex;
+    }
+    section .spacer {
+      font-weight: 900;
+      color: yellow;
+      background: black;
+    }
+  </style>
+</head>
+<body class="bg-[#262523] text-[#C7C7C4]">
+  <div id="app"><div>
+  <script id="x-app" type="text/x-template"></script>
+  <script>
+    fetch('./components/App.vue').then(r => r.text()).then(r => {
+      const template = r.split('</template>')[0].split('<template>')[1];
+      const script = r.split('<script>')[1].split('</scr'+'ipt>')[0];
+      window['x-app'].innerHTML = template;
+      eval(script);
+    })
+  </script>
+</body>
+</html>
