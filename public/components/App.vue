@@ -1,32 +1,42 @@
 <template>
-  <div class="mx-auto lg:max-w-[1024px] [&>div>section]:my-[20px] [&>div>section]:border [&>div>section]:border-black">
-    <div class="header bg-[#F8CE08] text-black flex justify-between">
-      <div class="left">
-        <a href="tel://0048538538757">
-          <i class="phone"></i>
-          <span>
-            +48&nbsp;538&nbsp;538&nbsp;757
-          </span>
-        </a>
-        <a href="mailto://zawieziemy.pl@gmail.com">zawieziemy.pl@gmail.com</a>
-        <a href="https://m.me/zawieziemypl">m.me/zawieziemypl</a>
-      </div>
-      <div class="right">
-        [f]
-        [t]
-        [ig]
+  <div class="mx-auto [&>div>section]:my-[20px] [&>div>section]:border [&>div>section]:border-black">
+    <div class="header bg-[#F8CE08] h-[48px] hidden md:block">
+      <div class="lg:max-w-[1024px] mx-auto text-black flex justify-between h-full items-center">
+        <div class="left flex text-sm">
+          <img class="mr-2" src="../assets/images/phone.svg" alt="phone">
+          <a class="mr-5" href="tel://0048538538757">
+            <span>
+              (+48)&nbsp;538&nbsp;538&nbsp;757
+            </span>
+          </a>
+          <img class="mr-2" src="../assets/images/mail.svg" alt="mail">
+          <a class="mr-5" href="mailto://zawieziemy.pl@gmail.com">zawieziemy.pl@gmail.com</a>
+          <img class="mr-2" src="../assets/images/msg.svg" alt="msg">
+          <a class="mr-5" href="https://m.me/zawieziemypl">m.me/zawieziemypl</a>
+        </div>
+        <div class="right flex">
+          <img class="mr-2" src="../assets/images/icon-fb.svg" alt="msg">
+          <img class="mr-2" src="../assets/images/icon-tiktok.svg" alt="msg">
+          <img class="mr-2" src="../assets/images/icon-instagram.svg" alt="msg">
+        </div>
       </div>
     </div>
-    <nav class="menu flex">
-      <div class="logo flex-1">[logo]</div>
-      <div class="right">
+    <nav class="menu flex lg:max-w-[1024px] mx-auto flex justify-between items-center h-[96px]">
+      <div class="logo flex-1">
+         <img class="mr-2" src="../assets/images/logo-tex-S.svg" alt="logo">
+      </div>
+        <button type="button" class="inline-flex items-center p-2 justify-center md:hidden">
+           <span class="sr-only">Open main menu</span>
+           <img class="mr-2" src="../assets/images/navi.svg" alt="navi">
+      </button>
+      <div class="right hidden md:block">
         <a href="#home" :class="{'underline decoration-[#F8CE08]': page == 0}" @click.prevent="page = 0">Home</a>
         <a href="#about" :class="{'underline decoration-[#F8CE08]': page == 1}" @click.prevent="page = 1">O nas</a>
         <a href="#kontakt" :class="{'underline decoration-[#F8CE08]': page == 2}" @click.prevent="page = 2">Kontakt</a>
       </div>
     </nav>
     <!-- Home page start -->
-    <div v-if="page == 0">
+    <div v-if="page == 0" class="lg:max-w-[1024px] mx-auto">
       <section id="hero" class="grid grid-cols-2 gap-4   grid-flow-col auto-cols-max">
         <div class="col-5">
           <div>
@@ -209,7 +219,7 @@
             Firma zawieziemy powstała w 2023 r. Jednak z transportem jesteśmy związani od kilku lat. Przez ten okres zdobyliśmy spore doświadczenie przede wszystkim na trasach międzynarodowych.
           </p>
           <p>
-            Dzięki bogatemu doświadczeniu możemy świadczyć usługi na najwyższym poziomie, dbając o satysfakcję oraz bezpieczeństwo naszych klientów – zarówno tych obecnych, jak i nowych. 
+            Dzięki bogatemu doświadczeniu możemy świadczyć usługi na najwyższym poziomie, dbając o satysfakcję oraz bezpieczeństwo naszych klientów – zarówno tych obecnych, jak i nowych.
           </p>
           <p>
             Działamy głównie w Bełchatowie i okolicach, ale obsługujemy również zlecenia na terenie całego kraju oraz poza jego granicami.
@@ -252,7 +262,7 @@
       <h1>Polityka prywatności</h1>
       <p>Nasz polityka prywatności to...</p>
     </dialog>
-  </div>  
+  </div>
 </template>
 
 <script>
