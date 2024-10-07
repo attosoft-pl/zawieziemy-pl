@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto [&>div>section]:my-[20px] [&>div>section]:border [&>div>section]:border-black">
+  <div class="mx-auto [&>div>section]:my-[20px]">
     <div class="header bg-[#F8CE08] h-[48px] hidden md:block">
       <div class="lg:max-w-[1024px] mx-auto text-black flex justify-between h-full items-center">
         <div class="left flex text-sm">
@@ -15,9 +15,9 @@
           <a class="mr-5" href="https://m.me/zawieziemypl">m.me/zawieziemypl</a>
         </div>
         <div class="right flex">
-          <img class="mr-2" src="../assets/images/icon-fb.svg" alt="msg">
-          <img class="mr-2" src="../assets/images/icon-tiktok.svg" alt="msg">
-          <img class="mr-2" src="../assets/images/icon-instagram.svg" alt="msg">
+          <img class="mr-3" src="../assets/images/icon-fb.svg" alt="msg">
+          <img class="mr-3" src="../assets/images/icon-tiktok.svg" alt="msg">
+          <img src="../assets/images/icon-instagram.svg" alt="msg">
         </div>
       </div>
     </div>
@@ -25,40 +25,46 @@
       <div class="logo flex-1">
          <img class="mr-2" src="../assets/images/logo-tex-S.svg" alt="logo">
       </div>
-        <button type="button" class="inline-flex items-center p-2 justify-center md:hidden">
+        <button @click="changeVisibility()" class="inline-flex items-center p-2 justify-center md:hidden">
            <span class="sr-only">Open main menu</span>
            <img class="mr-2" src="../assets/images/navi.svg" alt="navi">
       </button>
-      <div class="right hidden md:block">
-        <a href="#home" :class="{'underline decoration-[#F8CE08]': page == 0}" @click.prevent="page = 0">Home</a>
-        <a href="#about" :class="{'underline decoration-[#F8CE08]': page == 1}" @click.prevent="page = 1">O nas</a>
-        <a href="#kontakt" :class="{'underline decoration-[#F8CE08]': page == 2}" @click.prevent="page = 2">Kontakt</a>
+      <div :class="{ 'mobile': isMobileMenuOpen }" class="right hidden md:block font-bold flex underline-offset-4">
+        <a href="#home" class="mr-8" :class="{'text-white underline decoration-[#F8CE08]': page == 0}" @click.prevent="page = 0">Home</a>
+        <a href="#about" class="mr-8" :class="{'text-white underline decoration-[#F8CE08]': page == 1}" @click.prevent="page = 1">O nas</a>
+        <a href="#kontakt" :class="{'text-white underline decoration-[#F8CE08]': page == 2}" @click.prevent="page = 2">Kontakt</a>
       </div>
     </nav>
     <!-- Home page start -->
     <div v-if="page == 0" class="lg:max-w-[1024px] mx-auto">
-      <section id="hero" class="grid grid-cols-2 gap-4   grid-flow-col auto-cols-max">
-        <div class="col-5">
-          <div>
-            ZawiezieMy... Ciebie, Twoje auto i Twoje rzeczy!
+      <section id="hero" class="grid grid-cols-2 gap-4 grid-flow-col auto-cols-max">
+        <div class="col-5 lg:max-w-[370px]">
+          <div class="text-3xl font-bold text-white">
+            <h1>ZawiezieMy…<br>
+              Ciebie,<br>
+              Twoje auto<br>
+              i Twoje rzeczy!</h1>
           </div>
-          <div class="small mt-5">
-            Naszym priorytetem jest Twoje bezpieczeństwo i komfort. Stawiamy na indywidualne podejście, dostosowując się do Twoich potrzeb.
+          <div class="small my-5">
+          Naszym priorytetem jest Twoje bezpieczeństwo i komfort. Stawiamy na indywidualne podejście, dostosowując się do Twoich potrzeb.
           </div>
-          <a class="btn btn-primary bg-yellow text-black" href="tel://0048538538757">
-            <i class="phone"></i>
+         <div class="flex flex-col">
+          <a class="bg-[#F8CE08] text-black py-2 px-4 rounded text-center flex justify-center mb-3" href="tel://0048538538757">
             Zadzwoń
           </a>
-          <a href="btn btn-secondary" class="btn">Zapoznaj się z ofertą</a>
+          <a class="bg-[#46443B] text-white py-2 px-4 rounded text-center flex justify-center">
+            Zapoznaj się z ofertą
+          </a>
+          </div>
         </div>
         <div class="col-7">
-          <div class="carousel  flex- gap-2 overflow-auto -- [&>*>img]:h-[400px] [&>*>img]:max-w-[unset] [&>div]:inline-block" style="white-space: nowrap;">
-            <div class="slide">
-              <img src="./hero-slide-taxi 2.png" alt="Taxi Bełchatów, car, roof">
-            </div><div>
-              <img src="./hero-slide-laweta.png" alt="Pomoc drogowa Bełchatów">
-            </div><div>
-              <img src="./hero-slide-bus.png" alt="Przewóz osób Bełchatów">
+          <div class="hidden lg:flex w-full items-center justify-center">
+            <div class="flex transition-all">
+              <div v-for="(slide, index) in slides" :key="index"
+                  :class="['w-[130px] h-[350px] flex-shrink-0 transition-all', {'w-[400px]': currentIndex === index}]"
+                  @click="slideTo(index)">
+                <img :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover rounded-3xl"/>
+              </div>
             </div>
           </div>
         </div>
@@ -284,6 +290,21 @@ new Vue({
         '#about': 1,
         '#kontakt': 2,
       }[location.hash],
+      isMobileMenuOpen: false,
+      currentIndex: 0,
+      slides: [
+        { src: '../assets/images/car_1.jpg', alt: "Pomoc drogowa Bełchatów" },
+        { src: '../assets/images/car_2.jpg', alt: "Przewóz osób Bełchatów" },
+        { src: '../assets/images/car_3.jpg', alt: "Taxi Bełchatów, car, roof" },
+      ]
+    }
+  },
+  methods: {
+    changeVisibility() {
+        this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    },
+    slideTo(index) {
+      this.currentIndex = index;
     }
   },
   watch: {
