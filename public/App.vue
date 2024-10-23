@@ -3,29 +3,29 @@
     <div class="header bg-[#F8CE08] h-[48px] hidden md:block">
       <div class="lg:max-w-[1024px] mx-auto text-black flex justify-between h-full items-center">
         <div class="left flex text-sm">
-          <img class="mr-2" src="../assets/images/phone.svg" alt="phone" />
+          <img class="mr-2" src="./assets/images/phone.svg" alt="phone" />
           <a class="mr-5" href="tel://0048538538757">
             <span> (+48)&nbsp;538&nbsp;538&nbsp;757 </span>
           </a>
-          <img class="mr-2" src="../assets/images/mail.svg" alt="mail" />
+          <img class="mr-2" src="./assets/images/mail.svg" alt="mail" />
           <a class="mr-5" href="mailto://zawieziemy.pl@gmail.com">zawieziemy.pl@gmail.com</a>
-          <img class="mr-2" src="../assets/images/msg.svg" alt="msg" />
+          <img class="mr-2" src="./assets/images/msg.svg" alt="msg" />
           <a class="mr-5" href="https://m.me/zawieziemypl">m.me/zawieziemypl</a>
         </div>
         <div class="right flex">
-          <img class="mr-3" src="../assets/images/icon-fb.svg" alt="msg" />
-          <img class="mr-3" src="../assets/images/icon-tiktok.svg" alt="msg" />
-          <img src="../assets/images/icon-instagram.svg" alt="msg" />
+          <img class="mr-3" src="./assets/images/icon-fb.svg" alt="msg" />
+          <img class="mr-3" src="./assets/images/icon-tiktok.svg" alt="msg" />
+          <img src="./assets/images/icon-instagram.svg" alt="msg" />
         </div>
       </div>
     </div>
     <nav class="menu flex lg:max-w-[1024px] mx-auto flex justify-between items-center h-[96px]">
       <div class="logo flex-1">
-        <img class="mr-2" src="../assets/images/logo-tex-S.svg" alt="logo" />
+        <img class="mr-2" src="./assets/images/logo-tex-S.svg" alt="logo" />
       </div>
       <button @click="changeVisibility()" class="inline-flex items-center p-2 justify-center md:hidden">
         <span class="sr-only">Open main menu</span>
-        <img class="mr-2" src="../assets/images/navi.svg" alt="navi" />
+        <img class="mr-2" src="./assets/images/navi.svg" alt="navi" />
       </button>
       <div :class="{ mobile: isMobileMenuOpen }" class="right hidden md:block font-bold flex underline-offset-4">
         <a href="#home" class="mr-8" :class="{
@@ -84,7 +84,7 @@
           <div class="text-xs text-bold font-bold tracking-widest text-[#A2A19D] text-[#A2A19D] uppercase">
             Oferta
           </div>
-          <img class="ml-2" src="../assets/images/Ornament.svg" alt="spacer" />
+          <img class="ml-2" src="./assets/images/Ornament.svg" alt="spacer" />
         </div>
         <h2 class="text-3xl font-bold text-white mt-4 mb-7">
           Ty wyznaczasz cel, my znajdziemy najlepszą drogę.
@@ -92,21 +92,21 @@
         <div>
           <ul class="hover:[&>*]:list-disc md:columns-2 text-sm font-semibold">
             <li class="flex items-start">
-              <img class="mr-2" src="../assets/images/icon-check.svg" alt="check" />
+              <img class="mr-2" src="./assets/images/icon-check.svg" alt="check" />
               Usługi na terenie Bełchatowa i okolicy, w całej Polsce
               oraz zagranicą
             </li>
             <li class="flex items-start">
-              <img class="mr-2" src="../assets/images/icon-check.svg" alt="check" />Gwarancja wygody i punktualności
+              <img class="mr-2" src="./assets/images/icon-check.svg" alt="check" />Gwarancja wygody i punktualności
             </li>
             <li class="flex items-start">
-              <img class="mr-2" src="../assets/images/icon-check.svg" alt="check" />Dostępność 24/7
+              <img class="mr-2" src="./assets/images/icon-check.svg" alt="check" />Dostępność 24/7
             </li>
             <li class="flex items-start">
-              <img class="mr-2" src="../assets/images/icon-check.svg" alt="check" />Komfort i bezpieczeństwo
+              <img class="mr-2" src="./assets/images/icon-check.svg" alt="check" />Komfort i bezpieczeństwo
             </li>
             <li class="flex items-start">
-              <img class="mr-2" src="../assets/images/icon-check.svg" alt="check" />Idealne na codzienne dojazdy,
+              <img class="mr-2" src="./assets/images/icon-check.svg" alt="check" />Idealne na codzienne dojazdy,
               specjalne okazje i pilne
               potrzeby
             </li>
@@ -125,7 +125,7 @@
               </div>
               <ul class="text-[#A2A19D] text-sm mt-3 space-y-1 text-left">
                 <li v-for="(point, index2) in offer.points" :key="index2" class="flex items-start">
-                  <img src="../assets/images/iron-dot-S.svg" alt="dot" />{{ point }}
+                  <img src="./assets/images/iron-dot-S.svg" alt="dot" />{{ point }}
                 </li>
               </ul>
             </div>
@@ -137,7 +137,7 @@
           <div class="text-xs text-bold font-bold tracking-widest text-[#A2A19D] uppercase">
             Opinie
           </div>
-          <img class="ml-2" src="../assets/images/Ornament.svg" alt="spacer" />
+          <img class="ml-2" src="./assets/images/Ornament.svg" alt="spacer" />
         </div>
         <h2 class="text-3xl font-bold text-white mt-4 mb-7">
           Nie wierz nam na słowo, sprawdź co mówią o nas inni.
@@ -149,7 +149,7 @@
           }">
             <div v-for="(slide, index) in slides" :key="index" class="w-full lg:w-1/3 flex-shrink-0">
               <div class="bg-[#262523] p-4 rounded-lg shadow-lg text-[#A2A19D] lg:h-60">
-                <img src="../assets/images/Quote.svg" alt="quote" />
+                <img src="./assets/images/Quote.svg" alt="quote" />
                 <p class="text-base font-bold my-6 mr-3">{{ slide.quote }}</p>
                 <p class="text-sm font-semibold mb-1">
                   {{ slide.name }}
@@ -166,10 +166,10 @@
               }" @click="setActiveSlide(index)"></span>
 
             <button @click="prevSlide" class="absolute left-0">
-              <img src="../assets/images/icon-arrow-simple-left.svg" alt="arrow-left" />
+              <img src="./assets/images/icon-arrow-simple-left.svg" alt="arrow-left" />
             </button>
             <button @click="nextSlide" class="absolute right-0">
-              <img src="../assets/images/icon-arrow-simple-right.svg" alt="arrow-right" />
+              <img src="./assets/images/icon-arrow-simple-right.svg" alt="arrow-right" />
             </button>
           </div>
         </div>
@@ -179,7 +179,7 @@
           <div class="text-xs text-bold font-bold tracking-widest text-[#A2A19D] uppercase">
             Mapa
           </div>
-          <img class="ml-2" src="../assets/images/Ornament.svg" alt="spacer" />
+          <img class="ml-2" src="./assets/images/Ornament.svg" alt="spacer" />
         </div>
         <!-- <button @click="map += 1, map %= 4">dalej</button> -->
         <div class="relative mt-5">
@@ -212,16 +212,16 @@
             </div>
           </div>
           <div v-show="activeButton === 0" contenteditable="false">
-            <img src="../assets/images/taxi.png" />
+            <img src="./assets/images/taxi.png" />
           </div>
           <div v-show="activeButton === 1" contenteditable="false">
-            <img src="../assets/images/bus.png" />
+            <img src="./assets/images/bus.png" />
           </div>
           <div v-show="activeButton === 2" contenteditable="false">
-            <img src="../assets/images/pomo.png" />
+            <img src="./assets/images/pomo.png" />
           </div>
           <div v-show="activeButton === 3" contenteditable="false">
-            <img src="../assets/images/holowanie.png" />
+            <img src="./assets/images/holowanie.png" />
           </div>
         </div>
       </section>
@@ -310,21 +310,21 @@ new Vue({
       currentIndex: 0,
       carSlides: [
         {
-          src: '../assets/images/car_1.jpg',
+          src: './assets/images/car_1.jpg',
           alt: 'Pomoc drogowa Bełchatów',
         },
         {
-          src: '../assets/images/car_2.jpg',
+          src: './assets/images/car_2.jpg',
           alt: 'Przewóz osób Bełchatów',
         },
         {
-          src: '../assets/images/car_3.jpg',
+          src: './assets/images/car_3.jpg',
           alt: 'Taxi Bełchatów, car, roof',
         },
       ],
       offersInfo: [
         {
-          src: '../assets/images/icon-oferta.svg',
+          src: './assets/images/icon-oferta.svg',
           title: 'Usługi taxi',
           points: [
             'przewóz do 4 osób',
@@ -336,7 +336,7 @@ new Vue({
           ],
         },
         {
-          src: '../assets/images/icon-oferta_2.svg',
+          src: './assets/images/icon-oferta_2.svg',
           title: 'Przewóz osób busem',
           points: [
             'przewóz do 8 osób',
@@ -347,7 +347,7 @@ new Vue({
           ],
         },
         {
-          src: '../assets/images/icon-oferta_3.svg',
+          src: './assets/images/icon-oferta_3.svg',
           title: 'Pomoc drogowa',
           points: [
             'awaryjne odpalanie pojazdu',
@@ -358,7 +358,7 @@ new Vue({
           ],
         },
         {
-          src: '../assets/images/icon-oferta_4.svg',
+          src: './assets/images/icon-oferta_4.svg',
           title: 'Autoholowanie',
           points: [
             'pojazdy sprawne, uszkodzone i powypadkowe',

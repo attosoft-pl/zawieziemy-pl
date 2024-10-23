@@ -24,7 +24,7 @@
   <div id="app"><div>
   <script id="x-app" type="text/x-template"></script>
   <script>
-    fetch('./components/App.vue').then(r => r.text()).then(r => {
+    fetch('./App.vue').then(r => r.text()).then(r => {
       const template = r.split('</template>')[0].split('<template>')[1];
       const script = r.split('<script>')[1].split('</scr'+'ipt>')[0];
       window['x-app'].innerHTML = template;
