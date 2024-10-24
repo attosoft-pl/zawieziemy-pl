@@ -1,7 +1,7 @@
 <template>
-  <div class="mx-auto [&>div>section]:my-[80px]">
+  <div class="mx-5 md:mx-auto [&>div>section]:my-[80px]">
     <div class="header bg-[#F8CE08] h-[48px] hidden md:block">
-      <div class="lg:max-w-[1024px] mx-auto text-black flex justify-between h-full items-center">
+      <div class="max-lg:mx-5 lg:max-w-[1024px] mx-auto text-black flex justify-between h-full items-center">
         <div class="left flex text-sm">
           <img class="mr-2" src="./assets/images/phone.svg" alt="phone" />
           <a class="mr-5" href="tel://0048538538757">
@@ -30,13 +30,13 @@
       <div :class="{ mobile: isMobileMenuOpen }" class="right hidden md:block font-bold flex underline-offset-4">
         <a href="#home" class="mr-8" :class="{
           'text-white underline decoration-[#F8CE08]': page == 0,
-        }" @click.prevent="page = 0">Home</a>
+        }" @click.prevent="page = 0, isMobileMenuOpen = false">Home</a>
         <a href="#about" class="mr-8" :class="{
           'text-white underline decoration-[#F8CE08]': page == 1,
-        }" @click.prevent="page = 1">O nas</a>
+        }" @click.prevent="page = 1, isMobileMenuOpen = false">O nas</a>
         <a href="#kontakt" :class="{
           'text-white underline decoration-[#F8CE08]': page == 2,
-        }" @click.prevent="page = 2">Kontakt</a>
+        }" @click.prevent="page = 2, isMobileMenuOpen = false">Kontakt</a>
       </div>
     </nav>
     <!-- Home page start -->
@@ -51,7 +51,7 @@
               i Twoje rzeczy!
             </h1>
           </div>
-          <div class="small my-5">
+          <div class="small my-5 max-w-[100vw]">
             Naszym priorytetem jest Twoje bezpieczeństwo i komfort.
             Stawiamy na indywidualne podejście, dostosowując się do
             Twoich potrzeb.
@@ -61,14 +61,14 @@
               href="tel://0048538538757">
               Zadzwoń
             </a>
-            <a class="bg-[#46443B] text-white py-2 px-4 rounded text-center flex justify-center">
+            <a href="#oferta" class="bg-[#46443B] text-white py-2 px-4 rounded text-center flex justify-center">
               Zapoznaj się z ofertą
             </a>
           </div>
         </div>
         <div class="">
           <div class="hidden lg:flex w-full items-center justify-center">
-            <div class="flex transition-all">
+            <div class="flex transition-all gap-4">
               <div v-for="(slide, index) in carSlides" :key="index" :class="[
                 'w-[130px] h-[350px] flex-shrink-0 transition-all',
                 { 'w-[400px]': currentIndex === index },
@@ -112,7 +112,7 @@
             </li>
           </ul>
         </div>
-        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-4 items-stretch place-content-center mt-5">
+        <div class="grid lg:grid-cols-4 grid-cols-2 gap-4 items-stretch place-content-center mt-5">
           <div class="flex justify-center" :key="index" v-for="(offer, index) in offersInfo">
             <div class="bg-[#262523] rounded-xl p-4 text-center w-[250px] h-[450px]">
               <div class="flex justify-center items-center mb-4 h-[150px]">
@@ -184,7 +184,7 @@
         <!-- <button @click="map += 1, map %= 4">dalej</button> -->
         <div class="relative mt-5">
           <div class="absolute top-[41px] left-[35px]">
-            <div class="flex flex-col md:flex-row space-x-2 text-xs font-semibold">
+            <div class="flex flex-col md:flex-row font-semibold max-md:space-y-2 md:flex md:space-x-2 text-xs">
               <button @click="setActiveButton(0)" :class="{
                 'bg-[#F8CE08] text-[#22211F]': 0 === activeButton,
                 'bg-[#666562] text-white': 0 !== activeButton,
