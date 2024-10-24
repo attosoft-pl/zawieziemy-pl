@@ -23,12 +23,22 @@
 <body class="bg-[#2A2927] text-[#C7C7C4]">
   <div id="app"><div>
   <script id="x-app" type="text/x-template"></script>
+  <script id="x-footer" type="text/x-template"></script>
   <script>
-    fetch('./App.vue').then(r => r.text()).then(r => {
-      const template = r.split('</template>')[0].split('<template>')[1];
-      const script = r.split('<script>')[1].split('</scr'+'ipt>')[0];
-      window['x-app'].innerHTML = template;
-      eval(script);
+    function parseVueSFC(src, name = 'x-app') {
+      const template = src.split('</template>')[0].split('<template>')[1];
+      const script = src.split('<script>')[1].split('</scr'+'ipt>')[0];
+      window[name].innerHTML = template;
+      return eval(script);
+    }
+    const urls = [
+      './App.vue',
+      './Footer.vue',
+    ]
+    Promise.all(urls.map(url => fetch(url).then(r => r.text()))).then(components => {
+      const [App, Footer] = components;
+      window.Footer = parseVueSFC(Footer, 'x-footer');
+      parseVueSFC(App);
     })
   </script>
 </body>

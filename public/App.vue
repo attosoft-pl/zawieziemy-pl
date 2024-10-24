@@ -228,7 +228,7 @@
     </div>
     <!-- Home page end -->
     <!-- About start -->
-    <div v-show="page == 1">
+    <div v-show="page == 1" class="lg:max-w-[1024px] mx-auto">
       <div class="flex">
         <div class="flex-1">
           <h2>Zaufaj naszemu doświadczeniu</h2>
@@ -257,7 +257,7 @@
     </div>
     <!-- About end -->
     <!-- Kontakt start -->
-    <div v-show="page == 2">
+    <div v-show="page == 2" class="lg:max-w-[1024px] mx-auto">
       <div class="flex max-w-full">
         <div class="flex-1">
           <img src="./contact-col-1st.png" alt="" />
@@ -268,16 +268,7 @@
       </div>
     </div>
     <!-- Kontakt end -->
-    <section id="footer" class="dark:bg-[#262523] dark:text-[#C7C7C4]">
-      <div contenteditable="false">
-        <img src="./footer-mock.png" alt="" />
-      </div>
-      <hr />
-      <div>
-        <span> Copyright &copy; 2024 </span>
-        <a href="#" @click.prevent="window.privPol.showModal()">Polityka prywatności</a>
-      </div>
-    </section>
+    <x-footer/>
     <dialog id="privPol">
       <form method="dialog">
         <button type="submit">x</button>
@@ -290,7 +281,9 @@
 
 <script>
 new Vue({
-  components: {},
+  components: {
+    'x-footer': window.Footer,
+  },
   template: '#x-app',
   el: '#app',
   data() {
